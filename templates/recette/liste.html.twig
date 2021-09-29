@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="ui divider"></div>
+    <div class="ui centered grid">
+        <a href="{{ path('recette_tri', {'param': 'favori'}) }}">
+            <button class="ui circular primary basic button">Trier par favori</button>
+        </a>
+        <a href="{{ path('recette_tri', {'param': 'nom'}) }}">
+            <button class="ui circular primary basic button">Trier par nom</button>
+        </a>
+    </div>
+    <div class="ui divider"></div>
+    <div class="grid ui vertically divided">
+        <div class="four column row">
+            {% for recette in liste %}
+                <div class="column centered center aligned">
+                    <div class="card raised link ui blue">
+                        <div class="content">
+                            {% if recette.estfavori %}
+                                <i class="right floated star icon"></i>
+                            {% else %}
+                                <i class="right floated star outline icon"></i>
+                            {% endif %}
+                            <div class="header">{{ recette.nom }}</div>
+                            <div class="description">
+                                <p>
+                                    <a href="{{ path('recette_details', {'id': recette.id}) }}">
+                                        <img class="ui medium circular image" src="{{ asset(recette.image) }}"
+                                             alt="{{ recette.image }}">
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                    <span class="right floated star">
+                        {% if recette.estfavori %}
+                            <a href="{{ path('recette_modifie_favori', {'id': recette.id}) }}">Retirer des favoris</a>
+                     {% else %}
+                            <a href="{{ path('recette_modifie_favori', {'id': recette.id}) }}">Ajouter aux favoris</a>
+                        {% endif %}
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Liste
+{% endblock %}
+
+{% block filariane %}
+    {{ parent() }}
+    <div class="divider"> /</div>
+    <a class="active section" href="{{ path('recette_liste') }}">Liste</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="ui divider"></div>
+    <div>
+        <div class="ui grid center aligned centered" id="detail">
+            <div>
+                <img class="ui middle aligned image medium" src="{{ asset(recette.image) }}" alt="{{ recette.image }}">
+                <span>{{ recette.quantite1 }} {{ recette.ingredient1 | lower }}</span> -
+                <span>{{ recette.quantite2 }} {{ recette.ingredient2 | lower }}</span> -
+                <span>{{ recette.quantite3 }} {{ recette.ingredient3 | lower }}</span><br>
+            </div>
+            <p>
+                {{ recette.description }}
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} > Details
+{% endblock %}
+
+{% block filariane %}
+    {{ parent() }}
+    <div class="divider"> /</div>
+    <a class="section" href="{{ path('recette_liste') }}">Liste</a>
+    <div class="divider"> /</div>
+    <a class="active section">Details</a>
+{% endblock %}
+

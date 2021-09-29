@@ -1,0 +1,35 @@
+#detail {
+    margin: 100px;
+}
+p {
+    margin: 25px;
+}
+
+@font-face {
+    font-family: foodpacker;
+    src: url("../font/Foodpacker.otf");
+}
+
+h1 {
+    font-family: foodpacker, serif;
+    font-size: xxx-large;
+    color: rebeccapurple;
+    margin: auto;
+    text-align: center;
+    height: 25vh;
+    opacity: 100%;
+}
+
+body {
+    margin: 30px;
+}
+
+#etchebest {
+    background-image: url("../img/philippe-etchebest-1200x720.jpg");
+    opacity: 50%;
+    height: 50vh;
+}
+
+#etchebest:hover {
+    opacity: 100%;
+}
